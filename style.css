@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(#F1FAFF, #CBE4FF); /* Fixed background-color to background */
+}
+
+.sidebar {
+    background: #151A2d;
+    width: 270px;
+    position: fixed;
+    margin: 16px;
+    border-radius: 16px;
+    height: calc(100vh - 32px);
+    transition: 0.4s ease;
+}
+
+.sidebar.collapsed {
+    width: 95px;
+}
+
+.sidebar-header .logo img {
+    width: 46px;
+    height: 46px;
+    display: block;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.sidebar-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;
+}
+
+.sidebar-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    transition: 0.4s ease;
+    white-space: nowrap;
+}
+
+.sidebar-nav .nav-link:hover {
+    background: #dde4fb;
+    color: #151A2d;
+    border-radius: 8px;
+}
+
+.sidebar-nav .nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 20px;
+    transform: translateY(15px);
+    transition: 0.4s ease;
+}    
+
+.sidebar-nav .secondary-nav {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+}
+
+.sidebar-header .sidebar-toggle {
+    position: absolute;
+    right: 20px;
+    display: flex;
+}
+
+.sidebar-header .toggle {
+    height: 35px;
+    width: 35px;
+    border-radius: 8px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #151A2d;
+    transition: 0.4s ease;
+}
+
+.sidebar-header .toggle:hover {
+    background: #dde4fb;
+}
+
+.sidebar-header .sidebar-toggle span {
+    font-size: 1.75rem;
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .nav-link .nav-label {
+    display: inline-block;
+    transition: 0.4s ease;
+}
+
+/* Fixed typos in classes (siderbar -> sidebar, nav-lable -> nav-label) */
+.sidebar.collapsed .sidebar-nav .nav-link .nav-label {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sidebar.collapsed .sidebar-header .sidebar-toggle {
+    transform: translate(-4px, 50px);
+}
+
+.sidebar.collapsed .sidebar-header .sidebar-toggle span {
+    transform: rotate(180deg);
+}
+
+.sidebar-header .menu-toggle {
+    display: none;
+}
+
+.sidebar-nav .nav-tooltip {
+    position: absolute;
+    top: -10px;
+    left: calc(100% + 25px);
+    color: #151A2d;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #fff;
+    white-space: nowrap;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+}
+
+.sidebar-nav .nav-item {
+    position: relative;
+}
+
+.sidebar-nav .nav-item:hover .nav-tooltip {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(50%);
+}
+
+.sidebar.collapsed .sidebar-nav .nav-tooltip {
+    display: block;
+}
+
+@media (max-width: 728px) {
+    .sidebar {
+        height: 56px;
+        overflow: hidden;
+        margin: 13px;
+        width: calc(100% - 28px);
+        scrollbar-width: none;
+        max-height: calc(100vh - 28px);
+    }
+    .sidebar-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: #151A2d;
+        padding: 8px 10px;
+        border-radius: 16px;
+    }
+    .sidebar-header .menu-toggle {
+        display: flex;
+        height: 30px;
+        width: 30px;
+    }
+    .sidebar-header .sidebar-toggle {
+        display: none;
+    }
+    .sidebar-header .logo img {
+        width: 40px;
+        height: 40px;
+    }
+    .sidebar-nav .nav-link {
+        gap: 10px;
+        padding: 10px;
+        font-size: 0.94rem;
+    }
+    .sidebar-nav .nav-list {
+        padding: 0 10px;
+    }
+    .sidebar-nav .nav-link .nav-icon {
+        font-size: 1.37rem;
+    }
+    .sidebar-nav .secondary-nav {
+        position: relative;
+        bottom: 0;
+        margin: 40px 0 30px;
+    }
+}
