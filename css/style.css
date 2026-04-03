@@ -1,0 +1,27 @@
+/* ===== MAIN CONTENT STYLES ===== */
+.main-content {
+  /* Push content to the right of the sidebar */
+  /* Sidebar: 270px width + 16px left margin + 16px right margin = 302px total offset */
+  margin-left: 302px; 
+  margin-right: 16px;
+  margin-top: 16px;
+  padding: 30px;
+  transition: margin-left 0.4s ease, margin-right 0.4s ease; /* Smooth animation when sidebar collapses */
+}
+
+.main-content {
+  /* ... existing styles ... */
+  overflow-x: auto; /* Horizontal scroll if content is too wide */
+}
+.main-content {
+  /* ... existing styles ... */
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.main-content {
+  /* ... existing styles ... */
+  position: relative;
+  z-index: 1; /* Keep content below sidebar */
+}

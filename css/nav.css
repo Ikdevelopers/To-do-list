@@ -202,3 +202,40 @@ body {
         margin: 40px 0 30px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* When sidebar is collapsed (95px + 16px margin = 111px) */
+.sidebar.collapsed ~ .main-content {
+  margin-left: 127px;   /* 16px + 95px + 16px = sidebar collapsed total width */
+}
+
+/* ➕ INCREASE RIGHT MARGIN when collapsed (as you requested) */
+.sidebar.collapsed ~ .main-content {
+  margin-right: 40px;   /* Increase from 16px → 40px (adjust value as needed) */
+}
+
+/* Mobile: Full width content when sidebar becomes top bar */
+@media (max-width: 728px) {
+  .main-content {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 72px;
+  }
+  .sidebar.collapsed ~ .main-content {
+    margin-right: 16px; /* Reset right margin on mobile */
+  }
+}
+
+.sidebar {
+  /* ... existing styles ... */
+  z-index: 100; /* Keep sidebar above content */
+}
