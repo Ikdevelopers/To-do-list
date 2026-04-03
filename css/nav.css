@@ -9,9 +9,10 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(#F1FAFF, #CBE4FF); /* Fixed background-color to background */
+    background: linear-gradient(#F1FAFF, #CBE4FF);
 }
 
+/* ===== SIDEBAR ===== */
 .sidebar {
     background: #151A2d;
     width: 270px;
@@ -19,11 +20,23 @@ body {
     margin: 16px;
     border-radius: 16px;
     height: calc(100vh - 32px);
-    transition: 0.4s ease;
+    transition: width 0.4s ease;
+    z-index: 100;
+    overflow: visible;
 }
 
+/* Collapsed state — CSS handles width change */
 .sidebar.collapsed {
     width: 95px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px 20px;
 }
 
 .sidebar-header .logo img {
@@ -34,53 +47,7 @@ body {
     border-radius: 50%;
 }
 
-.sidebar-header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 25px 20px;
-}
-
-.sidebar-nav .nav-link {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 20px;
-    transition: 0.4s ease;
-    white-space: nowrap;
-}
-
-.sidebar-nav .nav-link:hover {
-    background: #dde4fb;
-    color: #151A2d;
-    border-radius: 8px;
-}
-
-.sidebar-nav .nav-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 0 20px;
-    transform: translateY(15px);
-    transition: 0.4s ease;
-}    
-
-.sidebar-nav .secondary-nav {
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
-}
-
-.sidebar-header .sidebar-toggle {
-    position: absolute;
-    right: 20px;
-    display: flex;
-}
-
+/* Toggle Buttons */
 .sidebar-header .toggle {
     height: 35px;
     width: 35px;
@@ -93,149 +60,186 @@ body {
     justify-content: center;
     color: #151A2d;
     transition: 0.4s ease;
+    flex-shrink: 0;
 }
 
 .sidebar-header .toggle:hover {
     background: #dde4fb;
 }
 
-.sidebar-header .sidebar-toggle span {
-    font-size: 1.75rem;
-    transition: 0.4s ease;
-}
-
-.sidebar-nav .nav-link .nav-label {
-    display: inline-block;
-    transition: 0.4s ease;
-}
-
-/* Fixed typos in classes (siderbar -> sidebar, nav-lable -> nav-label) */
-.sidebar.collapsed .sidebar-nav .nav-link .nav-label {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sidebar.collapsed .sidebar-header .sidebar-toggle {
-    transform: translate(-4px, 50px);
-}
-
-.sidebar.collapsed .sidebar-header .sidebar-toggle span {
-    transform: rotate(180deg);
-}
-
+/* Hide mobile toggle on desktop */
 .sidebar-header .menu-toggle {
     display: none;
 }
 
-.sidebar-nav .nav-tooltip {
-    position: absolute;
-    top: -10px;
-    left: calc(100% + 25px);
-    color: #151A2d;
-    padding: 6px 12px;
-    border-radius: 8px;
-    background: #fff;
-    white-space: nowrap;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
+/* Chevron rotation when collapsed */
+.sidebar.collapsed .sidebar-toggle span {
+    transform: rotate(180deg);
+}
+
+/* Navigation */
+.sidebar-nav .nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 20px;
     transition: 0.4s ease;
 }
 
+.sidebar-nav .nav-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    transition: 0.4s ease;
+    white-space: nowrap;
+    border-radius: 8px;
+}
+
+.sidebar-nav .nav-link:hover {
+    background: #dde4fb;
+    color: #151A2d;
+}
+
+/* Hide labels when collapsed */
+.sidebar.collapsed .nav-label {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+/* Secondary nav at bottom */
+.sidebar-nav .secondary-nav {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    left: 0;
+    padding: 0 20px;
+}
+
+/* Tooltips (show on hover when collapsed) */
 .sidebar-nav .nav-item {
     position: relative;
 }
 
-.sidebar-nav .nav-item:hover .nav-tooltip {
+/* ✅ 2. Tooltip styling + forced stacking order */
+.sidebar-nav .nav-tooltip {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 15px); /* Positions to the right of the icon */
+    transform: translateY(-50%);
+    background: #fff;
+    color: #151A2d;
+    padding: 6px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s ease;
+    z-index: 101; /* 🔑 Forces tooltips above main content */
+}
+
+
+.sidebar.collapsed .nav-item:hover .nav-tooltip {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(50%);
 }
 
-.sidebar.collapsed .sidebar-nav .nav-tooltip {
-    display: block;
-}
-
+/* ===== MOBILE (≤728px) ===== */
+/* ===== MOBILE RESPONSIVE (≤728px) ===== */
 @media (max-width: 728px) {
     .sidebar {
-        height: 56px;
-        overflow: hidden;
-        margin: 13px;
-        width: calc(100% - 28px);
-        scrollbar-width: none;
-        max-height: calc(100vh - 28px);
+        width: calc(100% - 32px);
+        height: 56px; /* Collapsed height */
+        margin: 16px;
+        border-radius: 16px;
+        overflow: visible; /* Allow dropdown to show */
+        transition: height 0.4s ease;
     }
+    
     .sidebar-header {
         position: sticky;
         top: 0;
         z-index: 20;
         background: #151A2d;
-        padding: 8px 10px;
+        padding: 8px 15px;
         border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
+    
+    /* Show mobile menu toggle */
     .sidebar-header .menu-toggle {
         display: flex;
         height: 30px;
         width: 30px;
     }
+    
+    /* Hide desktop collapse toggle */
     .sidebar-header .sidebar-toggle {
         display: none;
     }
+    
     .sidebar-header .logo img {
         width: 40px;
         height: 40px;
     }
+    
+    /* Navigation list - hidden by default on mobile */
+    .sidebar-nav .nav-list {
+        padding: 0 15px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: none; /* ✅ Remove translateY that breaks height calc */
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+        pointer-events: none; /* Prevent clicks when hidden */
+    }
+    
+    /* ✅ EXPANDED STATE - when menu-active is on sidebar */
+    .sidebar.menu-active {
+        height: auto;
+        min-height: 56px;
+        max-height: 90vh; /* Prevent overflow on small screens */
+        overflow-y: auto; /* Allow scrolling if menu is long */
+    }
+    
+    .sidebar.menu-active .nav-list {
+        max-height: 1000px; /* Large enough to fit all items */
+        opacity: 1;
+        pointer-events: auto;
+        padding: 15px;
+    }
+    
+    /* Nav links styling on mobile */
     .sidebar-nav .nav-link {
         gap: 10px;
-        padding: 10px;
+        padding: 12px 15px;
         font-size: 0.94rem;
     }
-    .sidebar-nav .nav-list {
-        padding: 0 10px;
-    }
+    
     .sidebar-nav .nav-link .nav-icon {
         font-size: 1.37rem;
     }
+    
+    /* Secondary nav - reposition for mobile flow */
     .sidebar-nav .secondary-nav {
         position: relative;
-        bottom: 0;
-        margin: 40px 0 30px;
+        bottom: auto;
+        width: 100%;
+        margin: 10px 0 20px;
+        padding: 0 15px;
+    }
+    
+    /* Hide tooltips on mobile (save space) */
+    .sidebar-nav .nav-tooltip {
+        display: none;
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-/* When sidebar is collapsed (95px + 16px margin = 111px) */
-.sidebar.collapsed ~ .main-content {
-  margin-left: 127px;   /* 16px + 95px + 16px = sidebar collapsed total width */
-}
-
-/* ➕ INCREASE RIGHT MARGIN when collapsed (as you requested) */
-.sidebar.collapsed ~ .main-content {
-  margin-right: 40px;   /* Increase from 16px → 40px (adjust value as needed) */
-}
-
-/* Mobile: Full width content when sidebar becomes top bar */
-@media (max-width: 728px) {
-  .main-content {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-top: 72px;
-  }
-  .sidebar.collapsed ~ .main-content {
-    margin-right: 16px; /* Reset right margin on mobile */
-  }
-}
-
-.sidebar {
-  /* ... existing styles ... */
-  z-index: 100; /* Keep sidebar above content */
-}
