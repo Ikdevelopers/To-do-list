@@ -1,0 +1,42 @@
+/* ===== MAIN CONTENT — CSS HANDLES ALL MARGINS ===== */
+.main-content {
+    /* Desktop: Sidebar expanded = 270px + 16px left margin + 16px right margin = 302px offset */
+    margin-left: 302px;
+    margin-right: 16px;
+    margin-top: 16px;
+    padding: 30px;
+    
+    /* Visual styling */
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    
+    /* Layout */
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 32px);
+    
+    /* Smooth transition when sidebar toggles — CSS handles the rest */
+    transition: margin-left 0.4s ease, margin-right 0.4s ease;
+}
+
+/* When sidebar is collapsed: 95px + 16px + 16px = 127px */
+.sidebar.collapsed ~ .main-content {
+    margin-left: 127px;
+    margin-right: 32px; /* Optional: add extra right space when collapsed */
+}
+
+/* Mobile: Full width content */
+@media (max-width: 728px) {
+    .main-content {
+        margin-left: 16px;
+        margin-right: 16px;
+        margin-top: 88px; /* Space for mobile sidebar header */
+        min-height: auto;
+    }
+    
+    .sidebar.collapsed ~ .main-content {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
