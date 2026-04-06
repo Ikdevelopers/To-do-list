@@ -39,3 +39,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Adding tasks using dom concepts
+const input = document.getElementById('taskInput');
+  const list  = document.getElementById('taskList');
+
+  function addTask() {
+    const text = input.value.trim();
+    if (!text) return; // stop if input is empty
+
+    // 1. Create a new <li> element
+    const li = document.createElement('li');
+
+    // 2. Set its text content
+    li.textContent = text;
+
+    // 3. Append it to the <ul> list
+    list.appendChild(li);
+
+    // 4. Clear the input field
+    input.value = '';
+  }
+
+  // Also trigger on Enter key press
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') addTask();
+  });

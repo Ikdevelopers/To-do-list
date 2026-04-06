@@ -108,8 +108,27 @@
 
     <!-- ✅ Main Content -->
     <main class="main-content">
-        <h1>Tasks!</h1>
-        <p>Your content appears beside the sidebar. Toggle the sidebar to see margins adjust via CSS.</p>
+    
+        <!-- HTML -->
+<div class="wrapper">
+  <h2>My Task List</h2>
+
+  <div id="addtask">
+    <input type="text" id="taskInput" placeholder="Enter a new task..." />
+    <button id="addTaskButton" onclick="addTask()">+ Add Task</button>
+  </div>
+
+  <!-- Tasks Display Section -->
+  <div class="task-section">
+    <div class="task-section-header">
+      <span class="task-section-title">Tasks</span>
+      <span class="task-count" id="taskCount">0</span>
+    </div>
+    <ul id="taskList"></ul>
+    <p id="emptyMsg">No tasks yet. Add one above!</p>
+  </div>
+</div>
+
     </main>
 
     <script src="script.js"></script>
