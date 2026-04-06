@@ -1,0 +1,21 @@
+/* Target main section only, not whole page */
+.main-content[data-theme="light"] {
+  --bg:        #ffffff;
+  --bg-second: #f5f5f5;
+  --text:      #1a1a1a;
+  --text-sub:  #666666;
+  --border:    #e0e0e0;
+  background:  var(--bg);
+  color:       var(--text);
+}
+
+.main-content[data-theme="dark"] {
+  --bg:        #1a1a2e;
+  --bg-second: #16213e;
+  --text:      #e0e0e0;
+  --text-sub:  #aaaaaa;
+  --border:    #333355;
+  background:  var(--bg);
+  color:       var(--text);
+  transition:  background 0.3s, color 0.3s;
+}

@@ -65,22 +65,36 @@
   border-color: #7F77DD; /* purple highlight on focus */
 }
 
-#addTaskButton {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%); /* centers it horizontally */
-  width: 90%;
-  max-width: 480px;
-  padding: 14px;
-  font-size: 15px;
-  background: #534AB7;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 999; /* keeps it above other content */
+.task-section-header {
+    display: flex;
+    justify-content: space-between; /* ← pushes count to far right */
+    align-items: center;
 }
+
+#addTaskButton {
+ position: sticky;
+    bottom: 20px;
+    
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 1rem auto 0;
+    padding: 14px;
+    
+    font-size: 15px;
+    font-weight: 500;
+    background: #534AB7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(83, 74, 183, 0.35);
+    transition: background 0.2s, transform 0.1s;
+}
+
+/* btn syling */
+#addTaskButton:hover  { background: #3C3489; }
+#addTaskButton:active { transform: scale(0.98); }
 
 .task-section {
   background: #f5f5f5;
@@ -89,6 +103,8 @@
   padding: 1rem 1.25rem;
   min-height: 120px; /* keeps section visible even when empty */
 }
+
+
 
 /* Each task card */
 #taskList li {
@@ -166,4 +182,9 @@
         margin-left: 16px;
         margin-right: 16px;
     }
+}
+
+.planned h2{
+ text-align: center;
+ margin-bottom: 8px; 
 }

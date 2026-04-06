@@ -6,8 +6,9 @@
     <title>Task Dashboard</title>
     
     <!-- ✅ Load BOTH stylesheets -->
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/settings.css">
     
     <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -18,7 +19,7 @@
     <aside class="sidebar">
         <header class="sidebar-header">
             <a href="" class="logo">
-                <img src="img/Site Icon.png" alt="Logo">
+                <img src="../img/Site Icon.png" alt="Logo">
             </a>
             
             <!-- ✅ Toggle button to collapse/expand sidebar -->
@@ -36,14 +37,14 @@
             <!-- Primary Nav -->
             <ul class="nav-list primary-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../index.html">
                         <span class="nav-icon material-symbols-outlined">add_task</span>
                         <span class="nav-label">Add Task</span>
                     </a>
                     <span class="nav-tooltip">Add Task</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/planned.html">
+                    <a class="nav-link" href="planned.html">
                         <span class="nav-icon material-symbols-outlined">task</span>
                         <span class="nav-label">Planned</span>
                     </a>
@@ -71,7 +72,6 @@
                     <span class="nav-tooltip">Settings</span>
                 </li>
             </ul>
-
         </nav>
     </aside>
 
@@ -80,24 +80,12 @@
     
         <!-- HTML -->
 <div class="wrapper planned">
-  <h2>My Task List</h2>
-
-  <div id="addtask">
-    <input type="text" id="taskInput" placeholder="Enter a new task..." />
-  </div>
-
-  <!-- Tasks Display Section -->
-  <div class="task-section">
-    <div class="task-section-header">
-      <span class="task-section-title">Tasks</span>
-      <span class="task-count" id="taskCount">0</span>
-    </div>
-    <ul id="taskList"></ul>
-    <p id="emptyMsg">No tasks yet. Add one above!</p>
-  </div>
+  <h2>Settings</h2>
+  
+  
 </div>
- <button id="addTaskButton" onclick="addTask()">+ Add Task</button>
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/settings.js"></script>
 </body>
