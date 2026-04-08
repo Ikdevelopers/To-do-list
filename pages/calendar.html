@@ -3,54 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Dashboard</title>
+    <title>Calendar - Task Dashboard</title>
     
-    <!-- ✅ Load BOTH stylesheets -->
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Load stylesheets -->
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/calendar.css">
     
     <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <body>
 
-    <!-- ✅ Sidebar Navigation -->
+    <!-- ✅ Sidebar Navigation (same as index.html) -->
     <aside class="sidebar">
         <header class="sidebar-header">
-            <a href="" class="logo">
-                <img src="img/Site Icon.png" alt="Logo">
+            <a href="../index.html" class="logo">
+                <img src="../img/Site Icon.png" alt="Logo">
             </a>
             
-            <!-- ✅ Toggle button to collapse/expand sidebar -->
+            <!-- Toggle button to collapse/expand sidebar -->
             <button class="toggle sidebar-toggle" aria-label="Collapse sidebar">
                 <span class="material-symbols-outlined">chevron_left</span>
             </button>
             
-            <!-- ✅ Mobile menu toggle -->
+            <!-- Mobile menu toggle -->
             <button class="toggle menu-toggle" aria-label="Toggle menu">
                 <span class="material-symbols-outlined">menu</span>
             </button>
         </header>
 
         <nav class="sidebar-nav">
-            <!-- Primary Nav -->
             <ul class="nav-list primary-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../index.html">
                         <span class="nav-icon material-symbols-outlined">add_task</span>
                         <span class="nav-label">Add Task</span>
                     </a>
                     <span class="nav-tooltip">Add Task</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/planned.html">
+                    <a class="nav-link" href="planned.html">
                         <span class="nav-icon material-symbols-outlined">task</span>
                         <span class="nav-label">Planned</span>
                     </a>
                     <span class="nav-tooltip">Planned</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/calendar.html">
+                    <a class="nav-link" href="calendar.html">
                         <span class="nav-icon material-symbols-outlined">calendar_today</span>
                         <span class="nav-label">Calendar</span>
                     </a>
@@ -64,40 +64,65 @@
                     <span class="nav-tooltip">Important</span>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pages/settings.html">
+                    <a class="nav-link" href="settings.html">
                         <span class="nav-icon material-symbols-outlined">settings</span>
                         <span class="nav-label">Settings</span>
                     </a>
                     <span class="nav-tooltip">Settings</span>
                 </li>
             </ul>
-
         </nav>
     </aside>
 
     <!-- ✅ Main Content -->
     <main class="main-content">
-    
-        <!-- HTML -->
-<div class="wrapper planned">
-  <h2>My Task List</h2>
+        <h2 class="calendar-title">Time would be better spent</h2>
+        
+        <!-- Calendar Controls -->
+        <div class="calendar-controls">
+            <button id="prevMonth" class="month-nav-btn" aria-label="Previous month">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            
+            <div class="month-year-display">
+                <h3 id="currentMonthYear"></h3>
+            </div>
+            
+            <button id="nextMonth" class="month-nav-btn" aria-label="Next month">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+            
+            <button id="todayBtn" class="today-btn">Today</button>
+        </div>
 
-  <div id="addtask">
-    <input type="text" id="taskInput" placeholder="Enter a new task..." />
-  </div>
+        <!-- Calendar Grid -->
+        <div class="calendar-grid">
+            <!-- Day headers -->
+            <div class="day-header">Sun</div>
+            <div class="day-header">Mon</div>
+            <div class="day-header">Tue</div>
+            <div class="day-header">Wed</div>
+            <div class="day-header">Thu</div>
+            <div class="day-header">Fri</div>
+            <div class="day-header">Sat</div>
 
-  <!-- Tasks Display Section -->
-  <div class="task-section">
-    <div class="task-section-header">
-      <span class="task-section-title">Tasks</span>
-      <span class="task-count" id="taskCount">0</span>
-    </div>
-    <ul id="taskList"></ul>
-    <p id="emptyMsg">No tasks yet. Add one above!</p>
-  </div>
-</div>
- <button id="addTaskButton" onclick="addTask()">+ Add Task</button>
+            <!-- Calendar dates will be injected here by JS -->
+            <div id="calendarDates"></div>
+        </div>
+
+        <!-- Quick Info Section -->
+        <div class="calendar-info">
+            <div class="info-box">
+                <span class="info-label">Today:</span>
+                <span class="info-value" id="todayDate"></span>
+            </div>
+            <div class="info-box">
+                <span class="info-label">Selected:</span>
+                <span class="info-value" id="selectedDate">None</span>
+            </div>
+        </div>
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="../js/calendar.js"></script>
 </body>
+</html>

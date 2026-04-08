@@ -1,175 +1,23 @@
-
-/* ===== MAIN CONTENT — CSS HANDLES ALL MARGINS ===== */
+/* ===== MAIN CONTENT ===== */
 .main-content {
-    /* Desktop: Sidebar expanded = 270px + 16px left margin + 16px right margin = 302px offset */
     margin-left: 302px;
     margin-right: 16px;
     margin-top: 16px;
     padding: 30px;
-    
-    /* Visual styling */
     background: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    
-    /* Layout */
     position: relative;
     z-index: 1;
     min-height: calc(100vh - 32px);
-    
-    /* Smooth transition when sidebar toggles — CSS handles the rest */
     transition: margin-left 0.4s ease, margin-right 0.4s ease;
 }
 
-/* When sidebar is collapsed: 95px + 16px + 16px = 127px */
-.sidebar.collapsed ~ .main-content {
-    margin-left: 127px;
-    margin-right: 32px; /* Optional: add extra right space when collapsed */
-}
-
-/* Mobile: Full width content */
-@media (max-width: 728px) {
-    .main-content {
-        margin-left: 16px;
-        margin-right: 16px;
-        margin-top: 88px; /* Space for mobile sidebar header */
-        min-height: auto;
-    }
-    
-    .sidebar.collapsed ~ .main-content {
-        margin-left: 16px;
-        margin-right: 16px;
-    }
-}
-
-
-/* add task styles */
-/* CSS */
-#addtask {
-  display: flex;
-  flex-direction: column; /* stacks input and button vertically */
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-
-#taskInput {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 15px;
-  border: 1.5px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-}
-
-#taskInput:focus {
-  border-color: #7F77DD; /* purple highlight on focus */
-}
-
-.task-section-header {
-    display: flex;
-    justify-content: space-between; /* ← pushes count to far right */
-    align-items: center;
-}
-
-#addTaskButton {
- position: sticky;
-    bottom: 20px;
-    
-    display: block;
-    width: 100%;
-    max-width: 480px;
-    margin: 1rem auto 0;
-    padding: 14px;
-    
-    font-size: 15px;
-    font-weight: 500;
-    background: #534AB7;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(83, 74, 183, 0.35);
-    transition: background 0.2s, transform 0.1s;
-}
-
-/* btn syling */
-#addTaskButton:hover  { background: #3C3489; }
-#addTaskButton:active { transform: scale(0.98); }
-
-.task-section {
-  background: #f5f5f5;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  min-height: 120px; /* keeps section visible even when empty */
-}
-
-
-
-/* Each task card */
-#taskList li {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: white;
-  border: 1.5px solid #AFA9EC;       /* purple border */
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin: 12px 16px;
-  box-shadow: 0 4px 12px rgba(83, 74, 183, 0.12),
-              0 1px 3px  rgba(83, 74, 183, 0.08); /* soft shadow */
-  animation: slideIn 0.25s ease;     /* smooth entry */
-}
-
-/* Hover lift effect */
-#taskList li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(83, 74, 183, 0.18);
-}
-
-/* Bullet point dot */
-.bullet {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #534AB7;   /* purple filled circle */
-  flex-shrink: 0;
-}
-
-/* Slide in animation */
-@keyframes slideIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== MAIN CONTENT — CSS HANDLES ALL MARGINS ===== */
-.main-content {
-    margin-left: 302px; /* Sidebar expanded = 270px + 16px left + 16px right */
-    margin-right: 16px;
-    margin-top: 16px;
-    padding: 30px;
-
-    /* Visual styling */
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-
-    /* Layout */
-    position: relative;
-    z-index: 1;
-    min-height: calc(100vh - 32px);
-
-    /* Smooth transition when sidebar toggles */
-    transition: margin-left 0.4s ease, margin-right 0.4s ease;
-}
-
-/* When sidebar is collapsed: 95px + 16px + 16px = 127px */
 .sidebar.collapsed ~ .main-content {
     margin-left: 127px;
     margin-right: 32px;
 }
 
-/* Mobile: Full width content */
 @media (max-width: 728px) {
     .main-content {
         margin-left: 16px;
@@ -184,7 +32,107 @@
     }
 }
 
-.planned h2{
- text-align: center;
- margin-bottom: 8px; 
+/* ===== TASK SECTION ===== */
+.planned h2 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#addtask {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+#taskInput {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1.5px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+#taskInput:focus {
+    border-color: #7F77DD;
+}
+
+.task-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#addTaskButton {
+    position: sticky;
+    bottom: 20px;
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 1rem auto 0;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 500;
+    background: #534AB7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(83, 74, 183, 0.35);
+    transition: background 0.2s, transform 0.1s;
+}
+
+#addTaskButton:hover {
+    background: #3C3489;
+}
+
+#addTaskButton:active {
+    transform: scale(0.98);
+}
+
+.task-section {
+    background: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    min-height: 120px;
+}
+
+#taskList li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border: 1.5px solid #AFA9EC;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 12px 16px;
+    box-shadow: 0 4px 12px rgba(83, 74, 183, 0.12),
+                0 1px 3px rgba(83, 74, 183, 0.08);
+    animation: slideIn 0.25s ease;
+}
+
+#taskList li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(83, 74, 183, 0.18);
+}
+
+.bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #534AB7;
+    flex-shrink: 0;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
