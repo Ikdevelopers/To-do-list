@@ -20,15 +20,17 @@
 
 @media (max-width: 728px) {
     .main-content {
-        margin-left: 16px;
-        margin-right: 16px;
-        margin-top: 88px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 56px;
         min-height: auto;
+        border-radius: 0;
     }
 
     .sidebar.collapsed ~ .main-content {
-        margin-left: 16px;
-        margin-right: 16px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 56px;
     }
 }
 

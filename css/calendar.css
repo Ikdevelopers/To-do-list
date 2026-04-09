@@ -118,6 +118,10 @@
 #calendarDates {
     display: contents;
 }
+/* That's it! The JavaScript will still generate all the dates, but CSS will hide any dates after the 35th position (which keeps 5 rows). No JS changes needed. ✅ */
+#calendarDates .calendar-date:nth-child(n+36) {
+    display: none;
+}
 /* Other month dates (grayed out) */
 .calendar-date.other-month {
     color: #ccc;

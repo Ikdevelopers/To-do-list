@@ -133,17 +133,24 @@ body {
 /* ===== MOBILE RESPONSIVE (≤728px) ===== */
 @media (max-width: 728px) {
     .sidebar {
-        width: calc(100% - 32px);
+        width: 100%;
         height: 56px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        border-radius: 0;
+        z-index: 1000;
         transition: height 0.4s ease;
     }
     
     .sidebar-header {
-        position: sticky;
+        position: relative;
         top: 0;
         z-index: 20;
         background: #151A2d;
         padding: 8px 15px;
+        border-radius: 0;
     }
     
     .sidebar-header .menu-toggle {
